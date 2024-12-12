@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.4.1"
+  },
+  "scripts": {
+    "lint": "eslint . --fix",
+    "format": "prettier --write .",
+    "build": "npm run build --prefix front && npm run build --prefix back",
+    "start": "npm run start --prefix back"
+  }
+}
