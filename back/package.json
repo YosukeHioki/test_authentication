@@ -18,7 +18,7 @@
     "seed-run": "knex seed:run --knexfile ./knexfile.js",
     "mi-se": "npm run migrate-latest && npm run seed-run",
     "nodemon": "nodemon ./server.js",
-    "build": "npm i && mi-se",
+    "build": "npm i && npm run mi-se",
     "start": "node ./server.js"
   }
 }
