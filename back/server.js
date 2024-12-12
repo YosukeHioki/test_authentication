@@ -76,6 +76,7 @@ const setUpServer = () => {
   // ログイン----------
   app.post('/api/logIn', (req, res) => {
     const userData = req.body;
+    // console.log("userData :", userData)//データはちゃんと入っている
     if (!userData.user_name || !userData.password) {
       return res.status(400).json({
         message: 'ユーザ名とパスワードを入力してください。',
@@ -83,11 +84,12 @@ const setUpServer = () => {
     }
     // 最初に設定したLocalStrategy(ユーザー名とパスワードでの認証)を使ってログイン
     passport.authenticate('local', (err, user) => {
-      if (!user) return res.status(401).json({ message: 'ログイン失敗！' });
+      console.log("user :", user)
+      if (!user) return res.status(401).json({ message: 'ログインに失敗しました。' });
       // sessionにログイン情報を格納
       req.logIn(user, () => {
         return res.json({
-          message: `${user.user_name}さん\nログインされました。`,
+          message: `ログインしました。`,
         });
       });
     })(req, res);

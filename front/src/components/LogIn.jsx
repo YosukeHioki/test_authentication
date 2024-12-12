@@ -14,21 +14,25 @@ export default function LogIn() {
   };
 
   async function logInAuth() {
-    const response = await fetch('http://localhost:8000/api/logIn', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-      credentials: 'include', // クッキーを含める
-    });
-    if (response.ok) {
-      const successResponse = await response.json();
-      alert(successResponse.message);
-      navigate('/test');
-    } else {
-      const errorResponse = await response.json();
-      alert(errorResponse.message);
+    try {
+      const response = await fetch('http://localhost:8000/api/logIn', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+        credentials: 'include', // クッキーを含める
+      });
+      if (response.ok) {
+        const successResponse = await response.json();
+        alert(successResponse.message);
+        navigate('/test');
+      } else {
+        const errorResponse = await response.json();
+        alert(errorResponse.message);
+      }
+    }catch(error){
+      alert(`ERROR MESSAGE: ${error}`)
     }
   }
 
